@@ -13,9 +13,9 @@ export function initSearch(onTableSelect) {
     if (!input) return;
 
     input.addEventListener('input', (e) => {
-        const term = e.target.value.trim();
+        const term = e.target.value.trim().toLowerCase(); 
         resultsContainer.innerHTML = '';
-        
+
         if (!term) {
             emptyState.classList.remove('hidden');
             noResults.classList.add('hidden');
@@ -23,7 +23,7 @@ export function initSearch(onTableSelect) {
         }
 
         emptyState.classList.add('hidden');
-        const matches = ALL_GUESTS.filter(g => g.name.includes(term)).slice(0, 6);
+        const matches = ALL_GUESTS.filter(g => g.name.toLowerCase().includes(term)).slice(0, 6);
 
         if (matches.length === 0) {
             noResults.classList.remove('hidden');
