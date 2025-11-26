@@ -1,4 +1,5 @@
-export const rawGuestList = `
+// RAW DATA
+const rawGuestList = `
 1	Alexander Hamilton、林志豪、張偉、Emily Watson、陳怡君、王力、Michael Chang、黃俊傑、李娜、Sarah Thompson
 2	張雅婷、James Lee、David Lee、林欣怡、趙強、Jennifer Wu、王志強、孫麗、Robert Garcia、李淑芬
 3	吳軍、Jessica Chen、陳建宏、鄭平、William Clark、蔡佩珊、謝安、Olivia Brown、楊宗緯、馮敏
@@ -21,41 +22,30 @@ export const rawGuestList = `
 20	鍾楚紅、易烊、Harold Kelly、關之琳、王源、Carl Sanders、李嘉欣、胡歌、Arthur Price、邱淑貞
 `;
 
+// Parse Guest Data
 export const TABLES = rawGuestList.trim().split('\n').map(line => {
-    
-  const parts = line.split('\t'); 
-    
-    if (parts.length < 2) {
-        console.error("Invalid guest list format on line:", line);
-        return { tableId: 0, names: [] };
-    }
-
-    const tableId = parseInt(parts[0].trim());
-    const names = parts[1].split('、').map(name => name.trim()).filter(name => name.length > 0);
-    
-    return { tableId, names };
-}).filter(table => table.tableId > 0 && table.names.length > 0);
-
+    const [numStr, namesStr] = line.split('\t');
+    return {
+        tableNumber: parseInt(numStr, 10),
+        guests: namesStr.split('、').map(n => n.trim())
+    };
+});
 
 export const ALL_GUESTS = TABLES.flatMap(table => 
-    table.names.map(name => ({
-        name: name,
-        tableId: table.tableId
-    }))
+    table.guests.map(name => ({ name, tableNumber: table.tableNumber }))
 );
 
-
 export const GALLERY_PHOTOS = [
-            { id: 1, url: "https://picsum.photos/600/600?random=1", size: "large" },
-            { id: 2, url: "https://picsum.photos/400/400?random=2", size: "small" },
-            { id: 3, url: "https://picsum.photos/400/800?random=3", size: "medium" },
-            { id: 4, url: "https://picsum.photos/400/400?random=4", size: "small" },
-            { id: 5, url: "https://picsum.photos/600/600?random=5", size: "medium" },
-            { id: 6, url: "https://picsum.photos/400/800?random=6", size: "large" },
-            { id: 7, url: "https://picsum.photos/400/400?random=7", size: "small" },
-            { id: 8, url: "https://picsum.photos/400/800?random=8", size: "small" },
-            { id: 9, url: "https://picsum.photos/400/400?random=9", size: "small" },
-            { id: 10, url: "https://picsum.photos/600/600?random=10", size: "medium" },
-            { id: 11, url: "https://picsum.photos/400/400?random=11", size: "large" },
-            { id: 12, url: "https://picsum.photos/400/400?random=12", size: "small" },
-        ];
+    { id: 1, url: "https://picsum.photos/600/600?random=1", size: "large" },
+    { id: 2, url: "https://picsum.photos/400/400?random=2", size: "small" },
+    { id: 3, url: "https://picsum.photos/400/800?random=3", size: "medium" },
+    { id: 4, url: "https://picsum.photos/400/400?random=4", size: "small" },
+    { id: 5, url: "https://picsum.photos/600/600?random=5", size: "medium" },
+    { id: 6, url: "https://picsum.photos/400/800?random=6", size: "large" },
+    { id: 7, url: "https://picsum.photos/400/400?random=7", size: "small" },
+    { id: 8, url: "https://picsum.photos/400/800?random=8", size: "small" },
+    { id: 9, url: "https://picsum.photos/400/400?random=9", size: "small" },
+    { id: 10, url: "https://picsum.photos/600/600?random=10", size: "medium" },
+    { id: 11, url: "https://picsum.photos/400/400?random=11", size: "large" },
+    { id: 12, url: "https://picsum.photos/400/400?random=12", size: "small" },
+];
