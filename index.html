@@ -93,12 +93,13 @@
                     </p>
                 </div>
 
+                <!-- Ceremony Section (Hidden by default, shown via JS if URL has ?inv=ceremony) -->
                 <div id="ceremony-section" class="hidden mb-16 animate-fade-in">
                     <div class="max-w-3xl mx-auto bg-white border-2 border-wedding-gold/30 rounded-xl p-8 md:p-10 relative overflow-hidden shadow-lg text-center">
                         <div class="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-wedding-gold/40 rounded-tl-xl"></div>
                         <div class="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-wedding-gold/40 rounded-br-xl"></div>
         
-                        <div class="text-wedding-gold mb-4"><i data-lucide="gem" class="w-8 h-8 mx-auto"></i></div>
+                        <div class="text-wedding-gold mb-4 flex justify-center"><i data-lucide="gem" class="w-8 h-8"></i></div>
                         <h3 class="text-2xl font-bold text-stone-800 mb-2 tracking-widest">證婚儀式</h3>
                         <p class="text-wedding-gold font-script text-2xl mb-6">Wedding Ceremony</p>
                         
@@ -146,7 +147,7 @@
             </div>
         </section>
 
-        <!-- TABLE SEARCH -->
+        <!-- TABLE SEARCH & MAP -->
         <section class="py-20 px-4 bg-wedding-cream" id="seating">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-10">
@@ -208,12 +209,11 @@
 
                             <!-- Map Grid -->
                             <div class="flex-1 flex justify-between relative px-0 md:px-4 gap-4 md:gap-12 max-w-5xl mx-auto w-full" id="seating-grid">
-                                <!-- Left Side (1-10) -->
+                                <!-- Columns injected by JS -->
                                 <div class="flex-1 flex justify-center gap-4 md:gap-8">
                                     <div class="flex flex-col gap-4 md:gap-6 items-center" id="col-1"></div>
                                     <div class="flex flex-col gap-4 md:gap-6 items-center" id="col-2"></div>
                                 </div>
-                                <!-- Right Side (11-20) -->
                                 <div class="flex-1 flex justify-center gap-4 md:gap-8">
                                     <div class="flex flex-col gap-4 md:gap-6 items-center" id="col-3"></div>
                                     <div class="flex flex-col gap-4 md:gap-6 items-center" id="col-4"></div>
@@ -255,9 +255,8 @@
         <p class="text-xs tracking-wider uppercase opacity-60">Thank you for celebrating with us</p>
         <p class="text-[10px] mt-8 opacity-30">Designed with Love</p>
     </footer>
-  
-  <script src="https://unpkg.com/lucide@latest"></script> 
-    
-  <script type="module" src="js/main.js"></script>
+
+    <!-- MAIN SCRIPT MODULE -->
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
